@@ -5,10 +5,10 @@
 
 import {util} from '@appium/support';
 import type {CommandModule, InferredOptionTypes, Options} from 'yargs';
-import {DocutilsError} from '../../error';
-import {DocutilsValidator, ValidationKind} from '../../validate';
-import logger from '../../logger';
-import {checkMissingPaths} from '../check';
+import {DocutilsError} from '../../error.js';
+import {DocutilsValidator, ValidationKind} from '../../validate.js';
+import logger from '../../logger.js';
+import {checkMissingPaths} from '../check.js';
 
 const log = logger.withTag('validate');
 

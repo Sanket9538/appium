@@ -5,11 +5,11 @@
 
 import path from 'node:path';
 import type {CommandModule, InferredOptionTypes, Options} from 'yargs';
-import {buildReferenceDocs, buildSite, deploy, updateNav} from '../../builder';
-import {NAME_BIN} from '../../constants';
-import logger from '../../logger';
-import {stopwatch} from '../../util';
-import {checkMissingPaths} from '../check';
+import {buildReferenceDocs, buildSite, deploy, updateNav} from '../../builder/index.js';
+import {NAME_BIN} from '../../constants.js';
+import logger from '../../logger.js';
+import {stopwatch} from '../../util.js';
+import {checkMissingPaths} from '../check.js';
 
 const log = logger.withTag('build');
 
@@ -220,7 +220,7 @@ export default {
       );
   },
   async handler(args) {
-    const stop = stopwatch('build');
+    const stop = stopwatch();
     log.debug('Build command called with args: %O', args);
     if (!args.site && !args.reference) {
       // specifically not a DocUtils error

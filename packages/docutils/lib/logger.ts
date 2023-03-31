@@ -9,17 +9,19 @@
 import figures from 'figures';
 import logSymbols from 'log-symbols';
 import chalk, {ForegroundColor, BackgroundColor} from 'chalk';
-import consola, {
+import consola from 'consola';
+import {DEFAULT_LOG_LEVEL, LogLevelMap} from './constants.js';
+import _ from 'lodash';
+import type {
   logType as LogType,
   ConsolaReporterLogObject,
-  FancyReporter,
   FancyReporterOptions,
-  Consola,
   ConsolaOptions,
+  Consola,
   LogLevel,
 } from 'consola';
-import {DEFAULT_LOG_LEVEL, LogLevelMap} from './constants';
-import _ from 'lodash';
+
+const {FancyReporter} = consola;
 
 /**
  * This is a reporter for `consola` which uses some extra/custom icons and colors.
@@ -140,6 +142,7 @@ let globalLevel: LogLevel = LogLevelMap[DEFAULT_LOG_LEVEL];
  * The logger from which all loggers are created.  This one uses a unique tag and our custom reporter.
  */
 const rootLogger = createLogProxy(
+  // @ts-expect-error
   consola.create({defaults: {tag: 'docutils'}, reporters: [new DocutilsReporter()]})
 );
 
@@ -191,3 +194,5 @@ function createLogProxy(logger: Consola): Consola {
  * @see {createLogProxy}
  */
 export default rootLogger;
+
+export {LogLevel};

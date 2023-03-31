@@ -5,14 +5,13 @@
  * @module
  */
 
-import {spawn, SpawnOptions} from 'node:child_process';
 import path from 'node:path';
 import {exec, TeenProcessExecOptions} from 'teen_process';
-import {NAME_BIN, NAME_MKDOCS, NAME_MKDOCS_YML, NAME_THEME} from '../constants';
-import {DocutilsError} from '../error';
-import {findMkDocsYml, readMkDocsYml, whichMkDocs} from '../fs';
-import logger from '../logger';
-import {relative, spawnBackgroundProcess, SpawnBackgroundProcessOpts, stopwatch} from '../util';
+import {NAME_BIN, NAME_MKDOCS_YML, NAME_THEME} from '../constants.js';
+import {DocutilsError} from '../error.js';
+import {findMkDocsYml, readMkDocsYml, whichMkDocs} from '../fs.js';
+import logger from '../logger.js';
+import {relative, spawnBackgroundProcess, SpawnBackgroundProcessOpts, stopwatch} from '../util.js';
 
 const log = logger.withTag('mkdocs');
 
@@ -64,7 +63,7 @@ export async function buildSite({
   serveOpts,
   execOpts,
 }: BuildMkDocsOpts = {}) {
-  const stop = stopwatch('build-mkdocs');
+  const stop = stopwatch();
   mkDocsYmlPath = mkDocsYmlPath
     ? path.resolve(process.cwd(), mkDocsYmlPath)
     : await findMkDocsYml(cwd);

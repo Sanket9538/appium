@@ -6,7 +6,7 @@
 import {fs, util} from '@appium/support';
 import _ from 'lodash';
 import type {Options} from 'yargs';
-import logger from '../logger';
+import logger from '../logger.js';
 
 const log = logger.withTag('check');
 

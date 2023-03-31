@@ -2,11 +2,16 @@
  * Constants used across various modules in this package
  * @module
  */
-import {LogLevel} from 'consola';
-import {readFileSync} from 'node:fs';
 import {fs} from '@appium/support';
+import consola from 'consola';
+import {readFileSync} from 'node:fs';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {PackageJson} from 'type-fest';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const {LogLevel} = consola;
 
 /**
  * CLI executable name
@@ -153,3 +158,5 @@ export const LogLevelMap = {
  * Default site nav header text
  */
 export const DEFAULT_NAV_HEADER = 'Reference';
+
+export {LogLevel};
